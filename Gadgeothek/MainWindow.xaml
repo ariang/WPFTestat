@@ -1,0 +1,38 @@
+﻿<Window x:Class="Gadgeothek.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gadgeothek"
+        mc:Ignorable="d"
+        Title="Gadgeothek" Height="350" Width="525">
+    <Grid>
+        <TabControl HorizontalAlignment="Left"
+		    Height="299"
+		    Margin="10,10,0,0"
+		    VerticalAlignment="Top"
+		    Width="497"
+		    SelectionChanged="TabControl_SelectionChanged">
+            <TabItem Header="Gadget">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left"
+			       Margin="10"
+			       TextWrapping="Wrap"
+			       Text="text"
+			       VerticalAlignment="Top"
+			       Width="471"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Ausleihe">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left"
+			       Margin="10"
+			       TextWrapping="Wrap"
+			       Text="text"
+			       VerticalAlignment="Top"
+			       Width="471"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
