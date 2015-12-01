@@ -11,7 +11,7 @@ namespace ch.hsr.wpf.gadgeothek.runner
     {
         static void Main(string[] args)
         {
-            var url = "http://localhost:8080";
+            var url = "http://mgeX.dev.ifs.hsr.ch/";
 
             // enable low-level HTTP-call logging by uncommenting the following line:
             //RestServiceBase.IsLogging = true;
@@ -27,7 +27,7 @@ namespace ch.hsr.wpf.gadgeothek.runner
             sample.ShowAdminInteractionForLoans();
 
             // shows the generic interface
-            var ipad = new Gadget("iPad Pro") {Manufacturer = "Apple"};
+            var ipad = new Gadget("iPad Pro", "Apple", 500);
             sample.ShowAdminInteractionWithGenericInterface(
                 ipad,
                 // get id (inventory number)

@@ -54,7 +54,7 @@ namespace ch.hsr.wpf.gadgeothek.runner
         {            
             var service = new LibraryAdminService(ServerUrl);
 
-            var gadget = new Gadget("XBOX360") { Manufacturer = "Microsoft" };
+            var gadget = new Gadget("XBOX360", "Microsoft", 200);
             if (!service.AddGadget(gadget))
             {
                 Console.WriteLine($"{gadget} konnte nicht hinzugefügt werden...");

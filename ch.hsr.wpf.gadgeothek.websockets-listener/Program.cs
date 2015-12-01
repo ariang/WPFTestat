@@ -11,9 +11,6 @@ namespace ch.hsr.wpf.gadgeothek.runner
     {
         static void Main(string[] args)
         {
-
-
-
             /*
                 This part demonstrates how to deal with live push notifications through Web sockets
             */
@@ -24,7 +21,7 @@ namespace ch.hsr.wpf.gadgeothek.runner
             Console.WriteLine("<Press CTRL + C to terminate the app>");
 
 
-            var url = "http://localhost:8080";
+            var url = "http://mge7.dev.ifs.hsr.ch/";
 
             // web socket connection to listen to changes:
             var client = new websocket.WebSocketClient(url);

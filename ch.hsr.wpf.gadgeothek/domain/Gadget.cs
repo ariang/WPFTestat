@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System.ComponentModel;
 
 namespace ch.hsr.wpf.gadgeothek.domain
 {
@@ -23,9 +24,11 @@ namespace ch.hsr.wpf.gadgeothek.domain
         {
         }
 
-        public Gadget(string name)
+        public Gadget(string name, string manufacturer, double price)
         {
             Name = name;
+            Price = price;
+            Manufacturer = manufacturer;
             var bits = Guid.NewGuid().ToByteArray().Take(8).ToArray();
             var nr = BitConverter.ToUInt64(bits, 0);
             InventoryNumber = nr.ToString();
@@ -65,8 +68,13 @@ namespace ch.hsr.wpf.gadgeothek.domain
         {
             return $"{Name} [{InventoryNumber}] by {Manufacturer} - Condition: {Condition.ToString().ToUpper()}";
         }
+
+
+        
     }
 
 
-    
+
+
+
 }

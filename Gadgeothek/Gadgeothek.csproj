@@ -67,8 +67,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="newGadget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="newGadget.xaml.cs">
+      <DependentUpon>newGadget.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,6 +102,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ch.hsr.wpf.gadgeothek.sample-runner\ch.hsr.wpf.gadgeothek.sample-runner.csproj">
+      <Project>{59ef5f84-b7cc-4656-b98a-db6f929633be}</Project>
+      <Name>ch.hsr.wpf.gadgeothek.sample-runner</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ch.hsr.wpf.gadgeothek.websockets-listener\ch.hsr.wpf.gadgeothek.websockets-listener.csproj">
+      <Project>{77af1e5c-e408-4388-a4c0-c65ff3b00e86}</Project>
+      <Name>ch.hsr.wpf.gadgeothek.websockets-listener</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ch.hsr.wpf.gadgeothek\ch.hsr.wpf.gadgeothek.csproj">
+      <Project>{ac1eeaa5-ea41-46fc-8afe-f0cf4b936abb}</Project>
+      <Name>ch.hsr.wpf.gadgeothek</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

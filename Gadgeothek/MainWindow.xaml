@@ -4,33 +4,39 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gadgeothek"
-        mc:Ignorable="d"
-        Title="Gadgeothek" Height="350" Width="525">
+        Title="Gadgeothek" Height="auto" Width="auto"
+        >
     <Grid>
-        <TabControl HorizontalAlignment="Left"
-		    Height="299"
+        <TabControl HorizontalAlignment="Stretch"
+		    Height="auto"
 		    Margin="10,10,0,0"
-		    VerticalAlignment="Top"
-		    Width="497"
-		    SelectionChanged="TabControl_SelectionChanged">
+		    VerticalAlignment="Stretch"
+		    Width="auto"
+		    Name="tabsGadgeothek">
             <TabItem Header="Gadget">
-                <Grid Background="#FFE5E5E5">
-                    <TextBlock HorizontalAlignment="Left"
-			       Margin="10"
-			       TextWrapping="Wrap"
-			       Text="text"
-			       VerticalAlignment="Top"
-			       Width="471"/>
-                </Grid>
+                <DockPanel>
+                    <Button DockPanel.Dock="Bottom" Margin="0,5,0,0" Click="newGadget_Click">new Gadget</Button>
+                    <DataGrid Name="gadgetsGrid"
+                              SelectedItem="{Binding SelectedGadget}"
+                              CanUserAddRows="false">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="Delete">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Delete"
+                                                Tag="{x:Static ApplicationCommands.Delete}"
+                                                Click="Delete_Click"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
             </TabItem>
             <TabItem Header="Ausleihe">
                 <Grid Background="#FFE5E5E5">
-                    <TextBlock HorizontalAlignment="Left"
-			       Margin="10"
-			       TextWrapping="Wrap"
-			       Text="text"
-			       VerticalAlignment="Top"
-			       Width="471"/>
+                    <DataGrid Name="loansGrid"
+                              CanUserAddRows="false"/>
                 </Grid>
             </TabItem>
         </TabControl>
