@@ -44,7 +44,7 @@ namespace Gadgeothek
         }
 
 
-
+        //TabControl handling
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // ... Get TabControl reference.
