@@ -8,12 +8,10 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.Windows.Input;
 using System.Threading.Tasks;
-<<<<<<< HEAD
 using System.Windows.Threading;
-=======
 using MahApps.Metro.Controls;
 using System.Text.RegularExpressions;
->>>>>>> origin/workspace
+
 
 namespace Gadgeothek
 {
@@ -25,7 +23,7 @@ namespace Gadgeothek
         ObservableCollection<Gadget> gadgets;
         ObservableCollection<Loan> loans;
         LibraryAdminService service;
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -74,7 +72,6 @@ namespace Gadgeothek
             }
         }
 
-<<<<<<< HEAD
         private void TheDataGrid_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Delete)
@@ -83,10 +80,7 @@ namespace Gadgeothek
             }
         }
 
-        private void newGadget_Click(object sender, RoutedEventArgs e)
-=======
         private void Submit_Click(object sender, RoutedEventArgs e)
->>>>>>> origin/workspace
         {
             if (nameBox.Text.Length == 0)
             {
@@ -119,7 +113,7 @@ namespace Gadgeothek
             }
 
         }
-<<<<<<< HEAD
+
 
         private void refreshLoans(object sender, EventArgs e)
         {
@@ -128,9 +122,7 @@ namespace Gadgeothek
             service.GetAllLoans().ForEach(l => loans.Add(l));
 
         }
-    }
-=======
->>>>>>> origin/workspace
+
 
         private void priceBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -148,3 +140,4 @@ namespace Gadgeothek
         }
     }
 }
+
