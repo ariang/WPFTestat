@@ -8,13 +8,15 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.Windows.Input;
 using System.Threading.Tasks;
+using MahApps.Metro.Controls;
+using System.Text.RegularExpressions;
 
 namespace Gadgeothek
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         public event PropertyChangedEventHandler PropertyChanged;
         ObservableCollection<Gadget> gadgets;
@@ -67,13 +69,53 @@ namespace Gadgeothek
             }
         }
 
-        private void newGadget_Click(object sender, RoutedEventArgs e)
+        private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            newGadget newGadget = new newGadget(service);
-            newGadget.Show();
-            this.Close();
+            if (nameBox.Text.Length == 0)
+            {
+                errormessage.Text = "Enter name";
+                nameBox.Focus();
+            }
+            else if (manufacturerBox.Text.Length == 0)
+            {
+                errormessage.Text = "Enter manufacturer";
+                manufacturerBox.Focus();
+            }
+            else if (priceBox.Text.Length == 0)
+            {
+                errormessage.Text = "Enter Price";
+                priceBox.Focus();
+            }
+            else
+            {
+                string name = nameBox.Text;
+                string manufacturer = manufacturerBox.Text;
+                double price = double.Parse(priceBox.Text);
+
+                Gadget gadget = new Gadget(name, manufacturer, price);
+
+                service.AddGadget(gadget);
+
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                this.Close();
+            }
+
+        }
+
+        private void priceBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!IsTextAllowed(e.Text))
+            {
+                errormessage.Text = "Price has to be a number";
+            }
+
+        }
+
+        private static bool IsTextAllowed(string text)
+        {
+            Regex regex = new Regex("[^0-9.-]+"); //regex that matches disallowed text
+            return !regex.IsMatch(text);
         }
     }
-
-
 }
