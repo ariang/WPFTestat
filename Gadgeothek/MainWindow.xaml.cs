@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.Windows.Input;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace Gadgeothek
 {
@@ -16,8 +17,8 @@ namespace Gadgeothek
     /// </summary>
     public partial class MainWindow : Window
     {
-        public event PropertyChangedEventHandler PropertyChanged;
         ObservableCollection<Gadget> gadgets;
+        ObservableCollection<Loan> loans;
         LibraryAdminService service;
         
         public MainWindow()
@@ -28,12 +29,13 @@ namespace Gadgeothek
             gadgets = new ObservableCollection<Gadget>(service.GetAllGadgets());
             gadgetsGrid.ItemsSource = gadgets;
 
-            loansGrid.ItemsSource = new ObservableCollection<Loan>(service.GetAllLoans());
+            loans = new ObservableCollection<Loan>(service.GetAllLoans());
+            loansGrid.ItemsSource = loans;
 
-
-            #region websocket
-
-            #endregion
+            var timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(5);
+            timer.Tick += refreshLoans;
+            timer.Start();
         }
 
 
@@ -67,11 +69,27 @@ namespace Gadgeothek
             }
         }
 
+        private void TheDataGrid_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                Delete_Click(sender, e);
+            }
+        }
+
         private void newGadget_Click(object sender, RoutedEventArgs e)
         {
             newGadget newGadget = new newGadget(service);
             newGadget.Show();
             this.Close();
+        }
+
+        private void refreshLoans(object sender, EventArgs e)
+        {
+            loans.Clear();
+            Console.WriteLine("Refresh");
+            service.GetAllLoans().ForEach(l => loans.Add(l));
+
         }
     }
 
